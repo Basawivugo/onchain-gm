@@ -52,10 +52,10 @@ This application allows you to send "GM" transactions on multiple blockchain net
    ```
    pip install -r requirements.txt
    ```
-3. Create a `.env` file with your configuration (see Configuration section below)
+3. Rename env.example to .env
 4. Run the application:
    ```
-   python main.py
+   python main.py or python3 main.py
    ```
 5. The application will create `data/private_keys.txt` if it doesn't exist
 6. Edit `data/private_keys.txt` to add your private keys (one per line)
@@ -108,15 +108,11 @@ The application reads private keys from `data/private_keys.txt`. The format is s
 Example:
 
 ```
-# My main wallet
 0x1111111111111111111111111111111111111111111111111111111111111111
-
-# My second wallet
 0x2222222222222222222222222222222222222222222222222222222222222222
-
-# Keys without 0x prefix also work
 3333333333333333333333333333333333333333333333333333333333333333
 ```
+Keys without 0x prefix also work
 
 ## Using the Menu System
 
@@ -145,17 +141,6 @@ Configure random delays between processing wallets to avoid rate limiting and ap
 Randomize the order of wallet processing:
 - Set `SHUFFLE_WALLETS=true` to enable shuffling
 - Set `SHUFFLE_WALLETS=false` to process wallets in file order
-
-## Adding a New Chain
-
-To add support for a new blockchain:
-
-1. Create a new file in the `chains` directory (e.g., `chains/new_chain.py`)
-2. Implement the chain class with the same interface as other chains
-3. Register the chain in `chains/__init__.py` by adding it to `AVAILABLE_CHAINS`
-4. Add the RPC URL to `.env`
-
-The new chain will automatically appear in the chain selection menu.
 
 ## Security Considerations
 
